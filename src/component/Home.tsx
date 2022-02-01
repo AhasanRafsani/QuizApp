@@ -53,7 +53,7 @@ const Home:React.FC = ()=>{
 
                      <TextField fullWidth label="Select language"  name="lang" onChange={handleInputChange} value={user.lang} sx={{marginTop:"10px"}} select >
                          <MenuItem value="React">React</MenuItem>
-                         <MenuItem value="Html">Html</MenuItem>
+                         <MenuItem value="HTML & CSS">HTML & CSS</MenuItem>
                      </TextField>
                       <Button fullWidth type="submit" variant="contained" sx={{marginTop:"10px"}}>Submit</Button>
                       </form>

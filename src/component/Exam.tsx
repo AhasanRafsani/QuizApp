@@ -15,7 +15,7 @@ import {multipleChoice,
 
 interface InitAns {
     id:number,
-    options:string[]
+    answer:string[]
 };
 
 const Exam:React.FC = ()=>{
@@ -42,39 +42,39 @@ const Exam:React.FC = ()=>{
 
        if(find){
                  if([multipleChoice,fillInTheBlank,trueFalse].includes(currentQ.type)){
-                     const _ansList= ansList.map((ans)=>{
-                         if(ans.id===currentQ.id){
-                             ans={id:currentQ.id,options:[option]}
+                     const _ansList = ansList.map((a)=>{
+                         if(a.id === currentQ.id){
+                             a={id:currentQ.id,answer:[option]}
                          }
-                         return ans;
+                         return a;
                      })
                      setAnsList(_ansList)
                      return;
                  }
                  if( multiSelect===currentQ.type) {
-                     const _ansList = ansList.map((ans)=>{
-                         if(ans.id===currentQ.id){
+                     const _ansList = ansList.map((a)=>{
+                         if(a.id===currentQ.id){
                             if(check){
-                                ans={id:currentQ.id,options:[...ans.options , option]}
+                                a={id:currentQ.id,answer:[...a.answer , option]}
                             }
                             else{
-                                let _option = ans.options.filter((op)=>op ! == option);
-                                ans={ id:currentQ.id,options: _option };
+                                let _option = a.answer.filter((value)=>value ! == option);
+                                a={ id:currentQ.id,answer: _option };
                             }
                          }
-                         return ans;
+                         return a;
                      })
                      setAnsList(_ansList)
                      return;
                  }
                 if(followingMatch===currentQ.type){
-                    const _ansList = ansList.map((ans)=>{
-                        if(ans.id===currentQ.id){
+                    const _ansList = ansList.map((a)=>{
+                        if(a.id===currentQ.id){
                          const _left = option.split("->")[0];
-                         let _options=ans.options.filter(op=> !op.startsWith(_left));
-                         ans={ id:currentQ.id,options: [..._options,option] };
+                         let _options=a.answer.filter( (val)=> !val.startsWith(_left));
+                         a={ id:currentQ.id,answer: [..._options,option] };
                         }
-                        return ans;
+                        return a;
 
                     })
                     setAnsList(_ansList)
@@ -83,7 +83,7 @@ const Exam:React.FC = ()=>{
                 }
        }
        else{
-           setAnsList([...ansList, {id:currentQ.id , options:[option]}]);
+           setAnsList([...ansList, {id:currentQ.id , answer:[option]}]);
        }
        
     }
@@ -92,7 +92,7 @@ const Exam:React.FC = ()=>{
     const isChecked = (option:string):boolean=>{
          const find = ansList.find((ans)=>ans.id===currentQ.id);
          if(find){
-             return !! find.options.find((op)=>op===option)
+             return !! find.answer.find((val)=>val===option)
          }
          return false
     }
@@ -100,7 +100,7 @@ const Exam:React.FC = ()=>{
     const isAnsQuestion =(index:number):boolean=>{
           const find = ansList.find((ans)=>ans.id===index);
           if(find){
-            return  find.options.length >0 ;
+            return  find.answer.length >0 ;
           }
           return false
 
@@ -110,7 +110,7 @@ const Exam:React.FC = ()=>{
         let count:number=0;
         ansList.forEach((ans)=>{
             for(let q of questionByLang){
-                if(ans.options.toString()===q.ans.toString()){
+                if(ans.answer.toString()===q.ans.toString()){
                     count++;
                 }
                 
@@ -118,7 +118,7 @@ const Exam:React.FC = ()=>{
 
         });
         
-        history.push("/Result",{ansCount:count,count:questionByLang.length})
+        history.push("/Result",{ansCount:count , count:questionByLang.length})
 
     }
 

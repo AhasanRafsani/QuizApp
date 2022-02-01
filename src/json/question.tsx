@@ -34,9 +34,9 @@ export const questionList: InitQuestion[] = [
     {
         id:2,
         type:fillInTheBlank  ,
-        title:" How many elements does a React Component Return ______ ?",
-        options:["Single","Both","Double","Multiple"],
-        ans:["Single"],
+        title:" How many number of elements a valid react component return  ______ ?",
+        options:["1","4","2","3"],
+        ans:["1"],
         lang:"React"
 
     },
@@ -53,7 +53,7 @@ export const questionList: InitQuestion[] = [
     {
         id:4,
         type: followingMatch ,
-        title:"Match the following" ,
+        title:"Match the following",
         options:["js","ts"],
         matchAns:["react","angular"],
         ans:["js->react","ts->angular"],
@@ -63,7 +63,7 @@ export const questionList: InitQuestion[] = [
     {
         id:5,
         type: trueFalse ,
-        title:"Bable is js Compiler ?" ,
+        title:"Does React.js creact a VIRTUAL DOM in the memory?",
         options:["True","False"],
         ans:["True"],
         lang:"React"
@@ -72,19 +72,19 @@ export const questionList: InitQuestion[] = [
     {
         id:6,
         type: multipleChoice  ,
-        title:"HTML uses ?" ,
-        options:["Defined tags","Specified tags","Fixed Tag","All above"],
-        ans:["Fixed Tag"],
-        lang:"Html"
+        title:"CSS stands for ?" ,
+        options:["Cascade style sheets","color and style sheet","Cascading style sheets","None of the above"],
+        ans:["Cascading style sheets"],
+        lang:"HTML & CSS"
 
     },
     {
         id:7,
-        type: fillInTheBlank ,
-        title:"Html block is known as _____?" ,
-        options:["Body","Tag","Attribute","Element"],
-        ans:["Tag"],
-        lang:"Html"
+        type: fillInTheBlank,
+        title:"In css what does h1 can be called as _____?" ,
+        options:["selector","Attribute","value","Tag"],
+        ans:["selector"],
+        lang:"HTML & CSS"
 
     },
     {
@@ -93,7 +93,7 @@ export const questionList: InitQuestion[] = [
         title:"What other tag makes text bold ?" ,
         options:["<fat>","<strong>","<black>","<b>"],
         ans:["<strong>","<b>"],
-        lang:"Html"
+        lang:"HTML & CSS"
 
     },
     {
@@ -102,16 +102,16 @@ export const questionList: InitQuestion[] = [
         title:"Display a photo in a Html page using <img/> ?" ,
         options:["True","False"],
         ans:["True"],
-        lang:"Html"
+        lang:"HTML & CSS"
 
     },
     {
         id:10,
-        type: multipleChoice ,
+        type: multipleChoice,
         title:"What should be the first tag in any HTML document ?" ,
         options:["head","title","html","document"],
         ans:["html"],
-        lang:"Html"
+        lang:"HTML & CSS"
 
     },
 

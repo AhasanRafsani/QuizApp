@@ -30,8 +30,8 @@ const Question:React.FC<Iprop> = ({currentQ , handleOptionPick, isChecked})=>{
 
                           <RadioGroup name={currentQ.id.toString()} onChange={ (e)=>handleOptionPick(e.target.value) }  >
                            {
-                               currentQ.options.map((op,index)=>(
-                                   <FormControlLabel key={index} label={op} value={op} control={ <Radio  checked = { isChecked(op) }/> } />
+                               currentQ.options.map((option,index)=>(
+                                   <FormControlLabel key={index} label={option} value={option} control={ <Radio  checked = { isChecked(option) }/> } />
                                ))
                            }
                                                      
@@ -43,8 +43,8 @@ const Question:React.FC<Iprop> = ({currentQ , handleOptionPick, isChecked})=>{
 
                     multiSelect===currentQ.type &&
                       <FormControl>
-                          {currentQ.options.map((op,index)=>(
-                              <FormControlLabel key={index} label={op} control={<Checkbox checked={isChecked(op)} onChange={(e)=>handleOptionPick(op,e.target.checked)} />}/>
+                          {currentQ.options.map((option,index)=>(
+                              <FormControlLabel key={index} label={option} control={<Checkbox checked={isChecked(option)} onChange={(e)=>handleOptionPick(option,e.target.checked)} />}/>
                           ))}
                       </FormControl>
                          
@@ -65,28 +65,28 @@ const Question:React.FC<Iprop> = ({currentQ , handleOptionPick, isChecked})=>{
                                      }
                                  </TableRow>
 
-                                     {
-                                         currentQ.options.map((op,index)=>(
-                                            <TableRow key={index}>
-                                                <TableCell>{op}</TableCell>
-                                                {
-                                                     currentQ.matchAns?.map((ans)=>(
+                        {
+                            currentQ.options.map((op,index)=>(
+                                <TableRow key={index}>
+                                    <TableCell>{op}</TableCell>
+                                        {
+                                          currentQ.matchAns?.map((ans)=>(
 
-                                                        <TableCell key={ans}>
+                                                <TableCell key={ans}>
 
-                                                            <input type="radio" name={op} value={op} onChange={(e)=>handleOptionPick(`${op} -> ${e.target.value}`)}/>
+                                                    <input type="radio" name={op} value={op} onChange={(e)=>handleOptionPick(`${op} -> ${e.target.value}`)}/>
                                                             
-                                                        </TableCell>
+                                                 </TableCell>
                                                         
                                                     ))
                                                 }
 
 
 
-                                            </TableRow>    
+                                </TableRow>    
 
-                                         ))
-                                     }
+                            ))
+                        }
                              
                             </TableBody>
                         </Table>
@@ -94,7 +94,7 @@ const Question:React.FC<Iprop> = ({currentQ , handleOptionPick, isChecked})=>{
                     }
                     </Box> ) : 
                    
-                   <Typography>No Question Fodund</Typography>
+                   <Typography>No Question</Typography>
      }
      </>
 
