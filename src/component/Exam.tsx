@@ -87,9 +87,9 @@ const Exam:React.FC = ()=>{
        }
        
     }
-    console.log(ansList);
+    //console.log(ansList);
 
-    const isChecked = (option:string):boolean=>{
+    const isChecked = (option:string):boolean=>{ // check checkBox option true or false
          const find = ansList.find((ans)=>ans.id===currentQ.id);
          if(find){
              return !! find.answer.find((val)=>val===option)
@@ -97,20 +97,25 @@ const Exam:React.FC = ()=>{
          return false
     }
 
-    const isAnsQuestion =(index:number):boolean=>{
-          const find = ansList.find((ans)=>ans.id===index);
-          if(find){
-            return  find.answer.length >0 ;
+    const isAnsQuestion =(qId:number):boolean=>{
+        
+          const findId = ansList.find((ans)=> ans.id === qId); //check question id exist in the ansList  
+          
+          if(findId){  //if findId then return true
+            return findId.answer.length>0 ;
           }
           return false
 
     }
 
     const handleSubmit=()=>{
-        let count:number=0;
-        ansList.forEach((ans)=>{
-            for(let q of questionByLang){
-                if(ans.answer.toString()===q.ans.toString()){
+        let count:number=0; //  initial count is 0
+        ansList.forEach((ans)=>{ 
+            for(let q of questionByLang){  
+                if(ans.answer.toString()===q.ans.toString()){  /* At first convet array to string so that we can compare between them. 
+                    
+                                                                if ansList answer and question answer match then increase count value */
+
                     count++;
                 }
                 
@@ -118,7 +123,7 @@ const Exam:React.FC = ()=>{
 
         });
         
-        history.push("/Result",{ansCount:count , count:questionByLang.length})
+        history.push("/Result",{ansCount:count , count:questionByLang.length}) // change path with value
 
     }
 
@@ -132,7 +137,7 @@ const Exam:React.FC = ()=>{
                   <Box sx={{height:"20px",width:"450px",margin:"10px auto"}}>
                      {
                         questionByLang.map((question,index)=>
-                          <Button sx={{ background: `${isAnsQuestion(index+1) ? "red" : "gray"}`, margin:"10px"}} key={index}  onClick={()=>getQuestionNo(index)} variant="contained" >{index+1}</Button>
+                          <Button sx={{ background: `${isAnsQuestion(question.id) ? "red" : "gray"}`, margin:"10px"}} key={index}  onClick={()=>getQuestionNo(index)} variant="contained" >{index+1}</Button>
                        )
                      }
                   </Box>

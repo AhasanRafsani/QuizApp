@@ -71,7 +71,7 @@ export const questionList: InitQuestion[] = [
     },
     {
         id:6,
-        type: multipleChoice  ,
+        type: multipleChoice,
         title:"CSS stands for ?" ,
         options:["Cascade style sheets","color and style sheet","Cascading style sheets","None of the above"],
         ans:["Cascading style sheets"],

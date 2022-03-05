@@ -2,9 +2,13 @@ import react from "react";
 import {useLocation} from "react-router-dom"
 import {Typography,Box} from "@mui/material";
 
+interface IState{
+    ansCount:number,
+    count:number  
+}
 
 const Result:React.FC = ()=>{
-    const {state} = useLocation<{ansCount:number,count:number}>();
+    const {state} = useLocation<IState>();
 
     const deg = (a: number, b: number) => {
         return (360 * a) / (a + b);
