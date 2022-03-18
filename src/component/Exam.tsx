@@ -129,27 +129,30 @@ const Exam:React.FC = ()=>{
 
     return(
      <>
-        <Container maxWidth="md" component={Paper} sx ={{minHeight:"200px",marginTop:"40px",background:"rgb(176,224,230)" }}>
+       <Grid container justifyContent="center" alignItems="center">
+            <Grid item xs={11} md={7}>
+              <Paper sx ={{minHeight:"200px", marginTop:"40px",padding:"10px", background:"rgb(176,224,230)" }}>
           
-             
-          <Typography align="center" color="primary" variant="h6">{state.lang} Exam</Typography>
+                 <Typography textAlign="center" color="primary" variant="h6">{state.lang} Exam</Typography>
 
-                  <Box sx={{height:"20px",width:"450px",margin:"10px auto"}}>
-                     {
-                        questionByLang.map((question,index)=>
-                          <Button sx={{ background: `${isAnsQuestion(question.id) ? "red" : "gray"}`, margin:"10px"}} key={index}  onClick={()=>getQuestionNo(index)} variant="contained" >{index+1}</Button>
-                       )
-                     }
-                  </Box>
+                    <Box>
+                        <Grid container justifyContent="center" >
+                          {
+                            questionByLang.map((question,index)=>
+                              <Button sx={{ background: `${isAnsQuestion(question.id) ? "red" : "gray"}`, margin:"10px"}} key={index}  onClick={()=>getQuestionNo(index)} variant="contained" >{index+1}</Button>
+                           )
+                          }
+                        </Grid>
+                    </Box>
               
-                  <Box sx={{marginTop:"30px "}}>
-                     <Question  currentQ={currentQ} handleOptionPick={handleOptionPick} isChecked={isChecked}  />
-                  </Box>
+                     <Box sx={{margin:"20px"}}>
+                        <Question  currentQ={currentQ} handleOptionPick={handleOptionPick} isChecked={isChecked}  />
+                     </Box>
            
-                  <Button onClick={handleSubmit} variant="contained" color="success" sx={{margin:"20px",width:"95%"}}>Submit</Button>
-
-        
-        </Container>
+                     <Button fullWidth onClick={handleSubmit} variant="contained" color="success">Submit</Button>
+               </Paper>
+            </Grid>
+        </Grid>  
      </>
 
     );

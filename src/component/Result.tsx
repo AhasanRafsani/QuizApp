@@ -1,6 +1,6 @@
-import react from "react";
+import React from "react";
 import {useLocation} from "react-router-dom"
-import {Typography,Box} from "@mui/material";
+import {Typography,Grid} from "@mui/material";
 
 interface IState{
     ansCount:number,
@@ -16,22 +16,23 @@ const Result:React.FC = ()=>{
 
     return(
      <>
-        <Typography color="secondary" variant="h6">Wrong Answer :{state.count - state.ansCount}</Typography>
-        <Typography color="primary" variant="h6">Right Answer :{state.ansCount}</Typography>
-         <div style={{ height:"300px",
-                    width:"300px",
-                    border:"1px solid red",
-                    backgroundImage: `conic-gradient(
-                        green 0deg ${deg(state.ansCount, state.count - state.ansCount)}deg, 
-                        red ${deg(state.ansCount, state.count - state.ansCount)}deg 360deg)
-                        `,
-                    borderRadius:"50%",
-                    margin:"auto"
-                    }}>
+        <Grid container direction="column" justifyContent="center">
+           <Typography color="red" variant="h5" sx={{margin:"10px"}}>Wrong Answer : 0{state.count - state.ansCount}</Typography>
+           <Typography color="green" variant="h5" sx={{margin:"10px"}}>Right Answer : 0{state.ansCount}</Typography>
+           <div style={{ height:"300px",
+                         width:"300px",
+                         border:"1px solid red",
+                         backgroundImage: `conic-gradient(
+                           green 0deg ${deg(state.ansCount, state.count - state.ansCount)}deg, 
+                           red ${deg(state.ansCount, state.count - state.ansCount)}deg 360deg)
+                           `,
+                         borderRadius:"50%",
+                         margin:"30px auto"
+                        }}>
 
 
-         </div>
-         
+            </div>
+        </Grid>
      </>
 
     );
